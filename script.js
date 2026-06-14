@@ -133,6 +133,19 @@ document.addEventListener("DOMContentLoaded", function () {
       burger.setAttribute("aria-expanded", links.classList.contains("open") ? "true" : "false");
     });
   }
+  // Apparition au scroll
+  var revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && revealEls.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("in"); });
+  }
+
   // Bascule de langue
   document.querySelectorAll(".lang button").forEach(function (b) {
     b.addEventListener("click", function () { applyLang(b.getAttribute("data-lang")); });
