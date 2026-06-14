@@ -133,6 +133,35 @@ document.addEventListener("DOMContentLoaded", function () {
       burger.setAttribute("aria-expanded", links.classList.contains("open") ? "true" : "false");
     });
   }
+  // Carrousel photos (page produit)
+  var track = document.getElementById("galTrack");
+  if (track) {
+    var count = track.children.length;
+    var idx = 0;
+    var dots = document.querySelectorAll("#galDots .dot");
+    function go(n) {
+      idx = (n + count) % count;
+      track.style.transform = "translateX(" + (-idx * 100) + "%)";
+      dots.forEach(function (d, i) { d.classList.toggle("active", i === idx); });
+    }
+    var prev = document.getElementById("galPrev");
+    var next = document.getElementById("galNext");
+    if (prev) prev.addEventListener("click", function () { go(idx - 1); });
+    if (next) next.addEventListener("click", function () { go(idx + 1); });
+    dots.forEach(function (d) {
+      d.addEventListener("click", function () { go(parseInt(d.getAttribute("data-i"), 10)); });
+    });
+    // Glissement tactile
+    var x0 = null;
+    track.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener("touchend", function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) go(dx < 0 ? idx + 1 : idx - 1);
+      x0 = null;
+    });
+  }
+
   // Apparition au scroll
   var revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && revealEls.length) {
