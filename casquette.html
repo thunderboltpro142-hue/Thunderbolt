@@ -11,7 +11,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-title="title.prod">
 
   <!-- HEADER -->
   <header class="site-head">
@@ -22,13 +22,18 @@
         </span>
         Thunderbolt
       </a>
-      <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-      <nav class="nav-links">
-        <a href="index.html">Accueil</a>
-        <a href="casquette.html" class="active">La casquette</a>
-        <a href="contact.html">Contact</a>
-        <a href="casquette.html" class="nav-shop">Boutique</a>
-      </nav>
+      <div class="nav-right">
+        <nav class="nav-links">
+          <a href="index.html" data-i18n="nav.home">Accueil</a>
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
+          <a href="casquette.html" class="nav-shop active" data-i18n="nav.shop">Boutique</a>
+        </nav>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="fr">FR</button>
+          <button type="button" data-lang="en">EN</button>
+        </div>
+        <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
     </div>
   </header>
 
@@ -42,41 +47,38 @@
       </div>
 
       <div class="produit-info">
-        <span class="eyebrow"><span class="dot"></span>Édition · Brodé en France</span>
-        <h1>La Casquette<br>Thunderbolt</h1>
+        <span class="eyebrow" data-i18n="prod.eyebrow"><span class="dot"></span>Édition · Brodé en France</span>
+        <h1 data-i18n="prod.h1">La Casquette<br>Thunderbolt</h1>
 
-        <!-- 👉 Prix : modifie ici si besoin -->
+        <!-- 👉 Prix : modifie ici + dans script.js (clés prod.price / prod.priceMeta / prod.priceTotal / prod.buy) -->
         <div class="price-row">
-          <span class="price">30 €</span>
-          <span class="price-meta">+ 5 € de livraison</span>
+          <span class="price" data-i18n="prod.price">30 €</span>
+          <span class="price-meta" data-i18n="prod.priceMeta">+ 5 € de livraison</span>
         </div>
-        <p class="price-total"><b>35 €</b> livré · taille unique réglable</p>
+        <p class="price-total" data-i18n="prod.priceTotal"><b>35 €</b> livré · taille unique réglable</p>
 
-        <p class="produit-desc">
+        <p class="produit-desc" data-i18n="prod.desc">
           Casquette blanche, logo éclair brodé fil par fil. Sobre, reconnaissable,
           conçue pour être portée tous les jours.
         </p>
 
         <ul class="specs">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg> Coton épais, finitions soignées</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg> Logo éclair brodé, pas imprimé</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg> Réglable — taille unique</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg> Brodé en France</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="spec1">Coton épais, finitions soignées</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="spec2">Logo éclair brodé, pas imprimé</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="spec3">Réglable — taille unique</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="spec4">Brodé en France</span></li>
         </ul>
 
         <div class="buy">
           <!-- ================================================================
-               BOUTON D'ACHAT
-               Remplace le href "#" par ton lien Stripe Payment Link.
-               (Stripe > Paiements > Liens de paiement > Créer)
-               Active "collecter l'adresse de livraison" + ajoute 5 € de port
-               dans Stripe : le client paie les 35 € sur la page Stripe.
+               BOUTON D'ACHAT — remplace le href "#" par ton lien Stripe.
+               Active "collecter l'adresse de livraison" + 5 € de port dans Stripe.
           ================================================================= -->
           <a href="#" class="btn btn-primary" style="padding:16px 30px;font-size:1.02rem;">
-            Acheter — 35 € livré
+            <span data-i18n="prod.buy">Acheter — 35 € livré</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <p class="ship-note">
+          <p class="ship-note" data-i18n="prod.ship">
             Paiement sécurisé · Carte, Apple&nbsp;Pay &amp; Google&nbsp;Pay<br>
             Adresse renseignée au paiement · Expédié sous 3–5 jours ouvrés
           </p>
@@ -94,12 +96,12 @@
           Thunderbolt
         </div>
         <div class="foot-links">
-          <a href="index.html">Accueil</a>
-          <a href="casquette.html">La casquette</a>
-          <a href="contact.html">Contact</a>
+          <a href="index.html" data-i18n="nav.home">Accueil</a>
+          <a href="casquette.html" data-i18n="nav.shop">Boutique</a>
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
         </div>
       </div>
-      <p class="foot-note">© 2026 Thunderbolt — <span class="store">thunderbolt.store</span> · Brodé en France</p>
+      <p class="foot-note" data-i18n="foot.note">© 2026 Thunderbolt — <span class="store">thunderbolt.store</span> · Brodé en France</p>
     </div>
   </footer>
 
