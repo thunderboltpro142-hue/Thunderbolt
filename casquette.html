@@ -40,10 +40,22 @@
   <!-- PRODUIT -->
   <section>
     <div class="wrap produit-grid">
-      <div class="produit-media reveal">
+      <div class="gallery reveal">
         <span class="halo" aria-hidden="true"></span>
-        <!-- Remplace l'URL par ton image hébergée si besoin -->
-        <img src="https://i.imgur.com/e9JM0L8.png" alt="Casquette Thunderbolt blanche, logo éclair brodé">
+        <div class="gallery-track" id="galTrack">
+          <div class="gallery-slide"><img src="https://i.imgur.com/e9JM0L8.png" alt="Casquette Thunderbolt blanche, logo éclair brodé — face"></div>
+          <div class="gallery-slide"><img src="https://i.imgur.com/sMresLB.png" alt="Casquette Thunderbolt blanche — autre angle"></div>
+        </div>
+        <button class="gal-btn prev" id="galPrev" type="button" aria-label="Photo précédente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="gal-btn next" id="galNext" type="button" aria-label="Photo suivante">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="gallery-dots" id="galDots">
+          <button class="dot active" type="button" data-i="0" aria-label="Photo 1"></button>
+          <button class="dot" type="button" data-i="1" aria-label="Photo 2"></button>
+        </div>
       </div>
 
       <div class="produit-info reveal">
