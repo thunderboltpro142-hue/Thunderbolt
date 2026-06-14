@@ -84,24 +84,33 @@ h2 { font-size: clamp(1.85rem, 3.8vw, 2.9rem); }
   backdrop-filter: saturate(160%) blur(12px);
   border-bottom: 1px solid var(--line);
 }
-.nav { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 70px; flex-wrap: nowrap; }
 .brand {
   font-family: var(--display); font-weight: 700; font-size: 1.2rem;
   letter-spacing: 0.04em; text-transform: uppercase;
   display: flex; align-items: center; gap: 9px;
 }
 .nav-links { display: flex; align-items: center; gap: 30px; }
-.nav-links a { font-size: 0.94rem; font-weight: 500; color: var(--ink-soft); transition: color .15s; }
+.nav-links a { font-size: 0.94rem; font-weight: 500; color: var(--ink-soft); transition: color .15s; position: relative; }
 .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-links a:not(.nav-shop)::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -8px;
+  height: 2px; background: var(--grad); border-radius: 2px;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .28s ease;
+}
+.nav-links a:not(.nav-shop):hover::after,
+.nav-links a:not(.nav-shop).active::after { transform: scaleX(1); }
 .nav-shop {
   background: var(--ink); color: #fff !important; padding: 9px 18px; border-radius: 10px;
   font-weight: 600 !important;
 }
 .nav-shop:hover { background: var(--orange); }
+.nav-shop.active { background: var(--orange); }
 .burger { display: none; background: none; border: 0; cursor: pointer; width: 40px; height: 40px; }
 .burger span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 5px auto; border-radius: 2px; }
 
-.nav-right { display: flex; align-items: center; gap: 20px; }
+.nav-right { display: flex; align-items: center; gap: 20px; flex-wrap: nowrap; }
 .lang { display: inline-flex; border: 1.5px solid var(--line); border-radius: 9px; overflow: hidden; flex: 0 0 auto; }
 .lang button {
   font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
