@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>La Casquette — Thunderbolt</title>
-  <meta name="description" content="La casquette Thunderbolt : blanche, brodée, made in France.">
+  <meta name="description" content="La casquette Thunderbolt : blanche, brodée, made in France. 30 € + 5 € de livraison.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,8 +16,8 @@
   <header class="site-head">
     <div class="wrap nav">
       <a href="index.html" class="brand">
-        <span class="bolt bolt-pulse" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24"><path d="M13 1 L4 13 L10 13 L9 23 L20 9 L13 9 Z" fill="#FFD15C" stroke="#161310" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        <span class="bolt" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF6A1A"/><stop offset="1" stop-color="#FFC400"/></linearGradient></defs><path d="M13 1 L4 13 L10 13 L9 23 L20 9 L13 9 Z" fill="url(#g1)"/></svg>
         </span>
         Thunderbolt
       </a>
@@ -26,53 +26,60 @@
         <a href="index.html">Accueil</a>
         <a href="casquette.html" class="active">La casquette</a>
         <a href="contact.html">Contact</a>
-        <a href="casquette.html" class="nav-shop">Shop</a>
+        <a href="casquette.html" class="nav-shop">Boutique</a>
       </nav>
     </div>
   </header>
 
   <!-- PRODUIT -->
-  <section class="bg-creme">
+  <section>
     <div class="wrap produit-grid">
       <div class="produit-media">
-        <!-- Remplace l'URL par ta propre image hébergée si besoin -->
+        <span class="halo" aria-hidden="true"></span>
+        <!-- Remplace l'URL par ton image hébergée si besoin -->
         <img src="https://i.imgur.com/6zviyjO.jpeg" alt="Casquette Thunderbolt blanche, logo éclair brodé">
       </div>
 
       <div class="produit-info">
-        <span class="badge">⚡ Made in France</span>
-        <h2 class="display">La Casquette<br>Thunderbolt</h2>
+        <span class="eyebrow"><span class="dot"></span>Édition · Brodé en France</span>
+        <h1>La Casquette<br>Thunderbolt</h1>
 
-        <!-- 👉 Mets ton prix réel ici -->
-        <div class="price">29 € <small>livraison en sus</small></div>
+        <!-- 👉 Prix : modifie ici si besoin -->
+        <div class="price-row">
+          <span class="price">30 €</span>
+          <span class="price-meta">+ 5 € de livraison</span>
+        </div>
+        <p class="price-total"><b>35 €</b> livré · taille unique réglable</p>
 
         <p class="produit-desc">
-          Casquette blanche 5 panneaux, logo éclair brodé fil par fil. Réglable, taille unique.
-          Sobre et reconnaissable — faite pour être portée tous les jours.
+          Casquette blanche, logo éclair brodé fil par fil. Sobre, reconnaissable,
+          conçue pour être portée tous les jours.
         </p>
 
         <ul class="specs">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg> Coton épais, finitions soignées</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg> Logo éclair brodé (pas imprimé)</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg> Réglable — taille unique</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg> Brodé en France</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg> Coton épais, finitions soignées</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg> Logo éclair brodé, pas imprimé</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg> Réglable — taille unique</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg> Brodé en France</li>
         </ul>
 
-        <!-- ================================================================
-             BOUTON D'ACHAT
-             Remplace le href "#" ci-dessous par ton lien Stripe Payment Link.
-             (Stripe > Paiements > Liens de paiement > Créer)
-             Pense à activer "collecter l'adresse de livraison" + frais de port
-             directement dans Stripe : le client paie tout sur la page Stripe.
-        ================================================================= -->
-        <a href="#" class="btn btn-primary" style="font-size:1.1rem;padding:17px 34px;">
-          Acheter — payer en sécurité
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-
-        <p class="ship-note">
-          🔒 Paiement sécurisé par carte, Apple Pay & Google Pay · Frais de port et adresse renseignés au paiement · Expédié sous 3–5 jours ouvrés.
-        </p>
+        <div class="buy">
+          <!-- ================================================================
+               BOUTON D'ACHAT
+               Remplace le href "#" par ton lien Stripe Payment Link.
+               (Stripe > Paiements > Liens de paiement > Créer)
+               Active "collecter l'adresse de livraison" + ajoute 5 € de port
+               dans Stripe : le client paie les 35 € sur la page Stripe.
+          ================================================================= -->
+          <a href="#" class="btn btn-primary" style="padding:16px 30px;font-size:1.02rem;">
+            Acheter — 35 € livré
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <p class="ship-note">
+            Paiement sécurisé · Carte, Apple&nbsp;Pay &amp; Google&nbsp;Pay<br>
+            Adresse renseignée au paiement · Expédié sous 3–5 jours ouvrés
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -82,7 +89,7 @@
     <div class="wrap">
       <div class="foot-grid">
         <div class="foot-brand">
-          <span class="bolt" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M13 1 L4 13 L10 13 L9 23 L20 9 L13 9 Z" fill="#FBB016" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"/></svg></span>
+          <span class="bolt" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24"><defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF6A1A"/><stop offset="1" stop-color="#FFC400"/></linearGradient></defs><path d="M13 1 L4 13 L10 13 L9 23 L20 9 L13 9 Z" fill="url(#g2)"/></svg></span>
           Thunderbolt
         </div>
         <div class="foot-links">
@@ -91,7 +98,7 @@
           <a href="contact.html">Contact</a>
         </div>
       </div>
-      <p class="foot-note">© 2026 Thunderbolt — <span class="foot-store">thunderbolt.store</span> · Brodé en France ⚡</p>
+      <p class="foot-note">© 2026 Thunderbolt — <span class="store">thunderbolt.store</span> · Brodé en France</p>
     </div>
   </footer>
 
