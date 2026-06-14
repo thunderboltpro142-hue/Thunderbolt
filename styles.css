@@ -21,7 +21,7 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 body {
   font-family: var(--body);
   color: var(--ink);
@@ -148,6 +148,24 @@ section { padding: 96px 0; }
 }
 @keyframes float { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-12px); } }
 
+/* Entrée du hero au chargement */
+@keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+.hero .eyebrow { animation: rise .7s ease .05s backwards; }
+.hero h1 { animation: rise .7s ease .14s backwards; }
+.hero .lede { animation: rise .7s ease .24s backwards; }
+.hero-cta { animation: rise .7s ease .34s backwards; }
+.hero-trust { animation: rise .7s ease .44s backwards; }
+.hero-cap { animation: fadein 1s ease .15s backwards; }
+
+/* Apparition au scroll */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.features .reveal:nth-child(2) { transition-delay: .1s; }
+.features .reveal:nth-child(3) { transition-delay: .2s; }
+.produit-info.reveal { transition-delay: .09s; }
+.form.reveal { transition-delay: .09s; }
+
 /* ---------- Features ---------- */
 .features-head { text-align: center; margin-bottom: 56px; }
 .features-head .rule { margin: 18px auto 0; }
@@ -160,7 +178,11 @@ section { padding: 96px 0; }
 .feature .ico {
   width: 52px; height: 52px; border-radius: 12px; margin-bottom: 22px;
   display: flex; align-items: center; justify-content: center;
-  background: var(--bg-soft);
+  background: var(--bg-soft); transition: background .25s ease, transform .25s ease;
+}
+.feature:hover .ico {
+  background: linear-gradient(135deg, rgba(255,106,26,.16), rgba(255,196,0,.16));
+  transform: scale(1.06);
 }
 .feature .ico svg { width: 26px; height: 26px; color: var(--orange); }
 .feature h3 { font-size: 1.2rem; margin-bottom: 7px; }
@@ -255,4 +277,5 @@ section { padding: 96px 0; }
 
 @media (prefers-reduced-motion: reduce) {
   *, .hero-cap img { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
 }
