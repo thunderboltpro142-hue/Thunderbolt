@@ -101,6 +101,16 @@ h2 { font-size: clamp(1.85rem, 3.8vw, 2.9rem); }
 .burger { display: none; background: none; border: 0; cursor: pointer; width: 40px; height: 40px; }
 .burger span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 5px auto; border-radius: 2px; }
 
+.nav-right { display: flex; align-items: center; gap: 20px; }
+.lang { display: inline-flex; border: 1.5px solid var(--line); border-radius: 9px; overflow: hidden; flex: 0 0 auto; }
+.lang button {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
+  padding: 7px 11px; background: transparent; border: 0; cursor: pointer;
+  color: var(--ink-soft); transition: background .15s, color .15s;
+}
+.lang button.active { background: var(--ink); color: #fff; }
+.lang button:not(.active):hover { color: var(--ink); }
+
 /* ---------- Sections ---------- */
 section { padding: 96px 0; }
 .bg-soft { background: var(--bg-soft); }
@@ -224,6 +234,7 @@ section { padding: 96px 0; }
   .nav-links.open { display: flex; }
   .nav-links a { padding: 12px 0; width: 100%; }
   .burger { display: block; }
+  .nav-right { gap: 12px; }
 
   .hero-grid, .produit-grid, .contact-grid { grid-template-columns: 1fr; gap: 44px; }
   .hero { padding: 56px 0; }
