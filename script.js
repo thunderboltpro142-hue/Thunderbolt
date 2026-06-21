@@ -39,7 +39,7 @@ var I18N = {
     "spec3": "Réglable — taille unique",
     "spec4": "Brodé en France",
     "prod.buy": "Acheter — 35 € livré",
-    "prod.ship": "Paiement sécurisé · Carte, Apple&nbsp;Pay &amp; Google&nbsp;Pay<br>Adresse renseignée au paiement · Expédié sous 3–5 jours ouvrés",
+    "prod.ship": "Paiement sécurisé · Carte, Apple&nbsp;Pay, Google&nbsp;Pay, Link, Amazon&nbsp;Pay &amp; Klarna<br>Adresse renseignée au paiement · Expédié sous 3–5 jours ouvrés",
     // Contact
     "contact.eyebrow": "<span class=\"dot\"></span>Contact",
     "contact.h1": "Une question&nbsp;?<br>Écris-nous.",
@@ -87,7 +87,7 @@ var I18N = {
     "spec3": "Adjustable — one size",
     "spec4": "Embroidered in France",
     "prod.buy": "Buy — €35 delivered",
-    "prod.ship": "Secure payment · Card, Apple&nbsp;Pay &amp; Google&nbsp;Pay<br>Address entered at checkout · Shipped within 3–5 business days",
+    "prod.ship": "Secure payment · Card, Apple&nbsp;Pay, Google&nbsp;Pay, Link, Amazon&nbsp;Pay &amp; Klarna<br>Address entered at checkout · Shipped within 3–5 business days",
     // Contact
     "contact.eyebrow": "<span class=\"dot\"></span>Contact",
     "contact.h1": "A question?<br>Write to us.",
