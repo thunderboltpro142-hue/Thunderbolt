@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>La Casquette — Thunderbolt</title>
-  <meta name="description" content="La casquette Thunderbolt : blanche, brodée, made in France. 30 € + 5 € de livraison.">
+  <meta name="description" content="La casquette Thunderbolt : blanche, brodée, made in France. 30 €.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -62,12 +62,10 @@
         <span class="eyebrow" data-i18n="prod.eyebrow"><span class="dot"></span>Édition · Brodé en France</span>
         <h1 data-i18n="prod.h1">La Casquette<br>Thunderbolt</h1>
 
-        <!-- 👉 Prix : modifie ici + dans script.js (clés prod.price / prod.priceMeta / prod.priceTotal / prod.buy) -->
+        <!-- 👉 Prix affiché : juste 30 € en gros -->
         <div class="price-row">
           <span class="price" data-i18n="prod.price">30 €</span>
-          <span class="price-meta" data-i18n="prod.priceMeta">+ 5 € de livraison</span>
         </div>
-        <p class="price-total" data-i18n="prod.priceTotal"><b></b>taille unique réglable</p>
 
         <p class="produit-desc" data-i18n="prod.desc">
           Casquette blanche, logo éclair brodé fil par fil. Sobre, reconnaissable,
@@ -82,22 +80,56 @@
         </ul>
 
         <div class="buy">
-          <!-- ================================================================
-               BOUTON D'ACHAT — lien Stripe en place ✓
-               Vérifie dans Stripe : collecte de l'adresse de livraison + 5 € de port.
-          ================================================================= -->
-          <a href="https://buy.stripe.com/6oUdR959UgwMavMcKs9oc00" class="btn btn-primary" style="padding:16px 30px;font-size:1.02rem;">
-            <span data-i18n="prod.buy">Acheter — 35 € livré</span>
+          <!-- Bouton qui ouvre la fenêtre d'info avant paiement -->
+          <button type="button" id="buyOpen" class="btn btn-primary" style="padding:16px 30px;font-size:1.02rem;">
+            <span data-i18n="prod.buy">Acheter</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <p class="ship-note" data-i18n="prod.ship">
-            Paiement sécurisé · Carte, Apple&nbsp;Pay, Google&nbsp;Pay, Link, Amazon&nbsp;Pay &amp; Klarna<br>
-            Adresse renseignée au paiement · Expédié sous 5–10 jours
-          </p>
+          </button>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ============================================================
+       FENÊTRE D'INFO AVANT PAIEMENT
+       Le lien Stripe est sur le bouton #buyStripe (data-href)
+  ============================================================= -->
+  <div class="modal-overlay" id="buyModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="modal-close" id="buyClose" aria-label="Fermer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+      </button>
+
+      <span class="eyebrow" data-i18n="modal.eyebrow"><span class="dot"></span>Récapitulatif</span>
+      <h2 id="modalTitle" class="modal-title" data-i18n="modal.title">La Casquette Thunderbolt</h2>
+
+      <div class="modal-lines">
+        <div class="modal-line">
+          <span data-i18n="modal.product">Casquette</span>
+          <b>30 €</b>
+        </div>
+        <div class="modal-line">
+          <span data-i18n="modal.shipping">Livraison (5 à 10 jours)</span>
+          <b>5 €</b>
+        </div>
+        <div class="modal-line modal-total">
+          <span data-i18n="modal.total">Total</span>
+          <b>35 €</b>
+        </div>
+      </div>
+
+      <button type="button" id="buyStripe" class="btn btn-primary modal-cta"
+              data-href="https://buy.stripe.com/6oUdR959UgwMavMcKs9oc00">
+        <span data-i18n="modal.pay">Acheter</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <p class="ship-note" data-i18n="modal.note">
+        Paiement sécurisé · Carte, Apple&nbsp;Pay, Google&nbsp;Pay, Link, Amazon&nbsp;Pay &amp; Klarna<br>
+        Adresse renseignée au paiement · Expédié sous 5–10 jours
+      </p>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="site-foot">
