@@ -223,17 +223,55 @@ section { padding: 96px 0; }
 .gallery-dots .dot.active { background: var(--orange); width: 22px; border-radius: 5px; }
 
 .produit-info h1 { margin: 16px 0 18px; }
-.price-row { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
-.price { font-family: var(--display); font-weight: 700; font-size: 2.5rem; letter-spacing: -0.02em; }
-.price-meta { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-soft); letter-spacing: 0.06em; }
-.price-total { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-soft); margin-bottom: 26px; }
-.price-total b { color: var(--ink); }
+.price-row { display: flex; align-items: baseline; gap: 14px; margin-bottom: 26px; }
+.price { font-family: var(--display); font-weight: 700; font-size: clamp(3.2rem, 7vw, 4.6rem); letter-spacing: -0.02em; line-height: 1; }
 .produit-desc { color: var(--ink-soft); margin-bottom: 26px; max-width: 46ch; }
 .specs { list-style: none; margin: 0 0 30px; border-top: 1px solid var(--line); }
 .specs li { display: flex; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 0.96rem; }
 .specs li svg { width: 18px; height: 18px; flex: 0 0 auto; color: var(--orange); }
 .buy { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
 .ship-note { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.05em; color: var(--ink-soft); line-height: 1.7; }
+
+/* ---------- Fenêtre d'achat (modal) ---------- */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  background: rgba(22,19,15,0.55);
+  backdrop-filter: blur(4px);
+  opacity: 0; transition: opacity .22s ease;
+}
+.modal-overlay[hidden] { display: none; }
+.modal-overlay.open { opacity: 1; }
+.modal {
+  position: relative;
+  width: 100%; max-width: 420px;
+  background: var(--bg); border: 1px solid var(--line); border-radius: 20px;
+  padding: 34px 30px 28px;
+  box-shadow: 0 30px 70px rgba(0,0,0,.22);
+  transform: translateY(14px) scale(.98); transition: transform .22s ease;
+}
+.modal-overlay.open .modal { transform: none; }
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1.5px solid var(--line); background: #fff; cursor: pointer; color: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  transition: background .18s, color .18s, border-color .18s;
+}
+.modal-close:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.modal-close svg { width: 18px; height: 18px; }
+.modal-title { font-size: 1.5rem; margin: 12px 0 22px; }
+.modal-lines { margin-bottom: 26px; border-top: 1px solid var(--line); }
+.modal-line {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 0; border-bottom: 1px solid var(--line);
+  font-size: 0.98rem; color: var(--ink-soft);
+}
+.modal-line b { font-family: var(--display); color: var(--ink); font-size: 1.05rem; }
+.modal-line.modal-total { color: var(--ink); font-weight: 600; }
+.modal-line.modal-total b { font-size: 1.4rem; }
+.modal-cta { width: 100%; justify-content: center; padding: 16px 24px; font-size: 1.02rem; margin-bottom: 18px; }
 
 /* ---------- Contact ---------- */
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
