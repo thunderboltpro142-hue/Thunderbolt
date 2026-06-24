@@ -1,4 +1,4 @@
-/* THUNDERBOLT — menu mobile + bascule de langue FR/EN */
+/* THUNDERBOLT — menu mobile + bascule de langue FR/EN + fenêtre d'achat */
 
 var I18N = {
   fr: {
@@ -31,15 +31,20 @@ var I18N = {
     "prod.eyebrow": "<span class=\"dot\"></span>Édition · Brodé en France",
     "prod.h1": "La Casquette<br>Thunderbolt",
     "prod.price": "30 €",
-    "prod.priceMeta": "+ 5 € de livraison",
-    "prod.priceTotal": "<b>35 €</b> livré · taille unique réglable",
     "prod.desc": "Casquette blanche, logo éclair brodé fil par fil. Sobre, reconnaissable, conçue pour être portée tous les jours.",
     "spec1": "Coton épais, finitions soignées",
     "spec2": "Logo éclair brodé, pas imprimé",
     "spec3": "Réglable — taille unique",
     "spec4": "Brodé en France",
-    "prod.buy": "Acheter — 35 € livré",
-    "prod.ship": "Paiement sécurisé · Carte, Apple&nbsp;Pay, Google&nbsp;Pay, Link, Amazon&nbsp;Pay &amp; Klarna<br>Adresse renseignée au paiement · Expédié sous 3–5 jours ouvrés",
+    "prod.buy": "Acheter",
+    // Fenêtre d'achat
+    "modal.eyebrow": "<span class=\"dot\"></span>Récapitulatif",
+    "modal.title": "La Casquette Thunderbolt",
+    "modal.product": "Casquette",
+    "modal.shipping": "Livraison (5 à 10 jours)",
+    "modal.total": "Total",
+    "modal.pay": "Acheter",
+    "modal.note": "Paiement sécurisé · Carte, Apple&nbsp;Pay, Google&nbsp;Pay, Link, Amazon&nbsp;Pay &amp; Klarna<br>Adresse renseignée au paiement · Expédié sous 5–10 jours",
     // Contact
     "contact.eyebrow": "<span class=\"dot\"></span>Contact",
     "contact.h1": "Une question&nbsp;?<br>Écris-nous.",
@@ -79,15 +84,20 @@ var I18N = {
     "prod.eyebrow": "<span class=\"dot\"></span>Edition · Embroidered in France",
     "prod.h1": "The Thunderbolt<br>Cap",
     "prod.price": "€30",
-    "prod.priceMeta": "+ €5 shipping",
-    "prod.priceTotal": "<b>€35</b> delivered · one adjustable size",
     "prod.desc": "White cap, bolt logo embroidered thread by thread. Clean, recognizable, made to be worn every day.",
     "spec1": "Thick cotton, careful finishing",
     "spec2": "Embroidered bolt logo, not printed",
     "spec3": "Adjustable — one size",
     "spec4": "Embroidered in France",
-    "prod.buy": "Buy — €35 delivered",
-    "prod.ship": "Secure payment · Card, Apple&nbsp;Pay, Google&nbsp;Pay, Link, Amazon&nbsp;Pay &amp; Klarna<br>Address entered at checkout · Shipped within 3–5 business days",
+    "prod.buy": "Buy",
+    // Buy modal
+    "modal.eyebrow": "<span class=\"dot\"></span>Summary",
+    "modal.title": "The Thunderbolt Cap",
+    "modal.product": "Cap",
+    "modal.shipping": "Shipping (5 to 10 days)",
+    "modal.total": "Total",
+    "modal.pay": "Buy",
+    "modal.note": "Secure payment · Card, Apple&nbsp;Pay, Google&nbsp;Pay, Link, Amazon&nbsp;Pay &amp; Klarna<br>Address entered at checkout · Shipped within 5–10 days",
     // Contact
     "contact.eyebrow": "<span class=\"dot\"></span>Contact",
     "contact.h1": "A question?<br>Write to us.",
@@ -160,6 +170,43 @@ document.addEventListener("DOMContentLoaded", function () {
       if (Math.abs(dx) > 40) go(dx < 0 ? idx + 1 : idx - 1);
       x0 = null;
     });
+  }
+
+  // Fenêtre d'achat (modal) — récap avant paiement, puis redirection Stripe
+  var modal = document.getElementById("buyModal");
+  var openBtn = document.getElementById("buyOpen");
+  var closeBtn = document.getElementById("buyClose");
+  var stripeBtn = document.getElementById("buyStripe");
+  if (modal && openBtn) {
+    function openModal() {
+      modal.hidden = false;
+      // force le reflow pour déclencher la transition
+      void modal.offsetWidth;
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeModal() {
+      modal.classList.remove("open");
+      document.body.style.overflow = "";
+      setTimeout(function () { modal.hidden = true; }, 220);
+    }
+    openBtn.addEventListener("click", openModal);
+    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+    // clic sur le fond sombre = fermeture
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) closeModal();
+    });
+    // touche Échap = fermeture
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !modal.hidden) closeModal();
+    });
+    // 2e clic « Acheter » → redirection Stripe
+    if (stripeBtn) {
+      stripeBtn.addEventListener("click", function () {
+        var href = stripeBtn.getAttribute("data-href");
+        if (href) window.location.href = href;
+      });
+    }
   }
 
   // Apparition au scroll
